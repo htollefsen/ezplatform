@@ -30,9 +30,9 @@ before_install:
     - composer self-update -q
 
 install:
-    - if [ -z "$dependencies" ]; then travis_retry composer --prefer-source install --no-interaction; fi;
-    - if [ "$dependencies" = "lowest" ]; then travis_retry composer --prefer-source update --prefer-lowest --no-interaction; fi;
-    - if [ "$dependencies" = "highest" ]; then travis_retry composer --prefer-source update --no-interaction; fi;
+    - if [ -z "$dependencies" ]; then composer install --no-interaction; fi;
+    - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --no-interaction; fi;
+    - if [ "$dependencies" = "highest" ]; then composer update --no-interaction; fi;
     - composer show -i
 
 script:
