@@ -37,8 +37,7 @@ before_install:
     - composer self-update -q
 
 install:
-    - if [ "$dependencies" = "lowest" ]; then composer install --prefer-lowest --no-interaction; fi;
-    - if [ "$dependencies" = "highest" ]; then composer install --no-interaction; fi;
+    - composer update --prefer-"$dependencies" --no-interaction;
     - composer show -i
 
 script:
