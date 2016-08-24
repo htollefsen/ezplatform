@@ -11,11 +11,8 @@ matrix:
     allow_failures:
         - php: hhvm
         - php: 5.5
-          env: dependencies=lowest
         - php: 5.6
-          env: dependencies=lowest
         - php: 7.0
-          env: dependencies=lowest
     fast_finish: true
 
 cache:
@@ -31,6 +28,7 @@ install:
     - if [ "$dependencies" = "highest" ]; then composer install --no-interaction; fi;
     - composer show -i
     - if [ -z "$dependencies" ]; then composer install --no-interaction; fi;
+    - composer show -i
 
 script:
     - vendor/phpunit/phpunit/phpunit
