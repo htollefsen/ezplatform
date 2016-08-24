@@ -5,6 +5,9 @@
     "keywords": ["transfer", "ezpublish", "ezplatform"],
     "minimun-stability": "stable",
     "license": "MIT",
+    "repositories": [
+        { "type": "composer", "url": "https://updates.ez.no/bul" }
+    ],
     "author": [
         {
             "name": "Valentin Jonovs",
@@ -18,7 +21,7 @@
     "require": {
         "php": "~5.5|~7.0",
         "transfer/transfer": "~1.0.0",
-        "ezsystems/ezpublish-kernel": "~6.3",
+        "ezsystems/ezpublish-kernel": "~6.0|~5.4.7",
         "symfony/config": "~2.7.7"
     },
     "require-dev": {

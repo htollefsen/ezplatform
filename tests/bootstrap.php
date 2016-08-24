@@ -15,6 +15,10 @@ if (!file_exists($configDir.'/config.php')) {
         throw new \RuntimeException('Could not symlink config.php-DEVELOPMENT to config.php!');
     }
 }
+if (!file_exists($configDir.'/var')) {
+    mkdir($configDir . '/var');
+    chmod($configDir . '/var', 777);
+}
 
 /** @var Composer\Autoload\ClassLoader $loader */
 $loader = require __DIR__.'/../vendor/autoload.php';
