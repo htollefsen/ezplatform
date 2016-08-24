@@ -3,13 +3,9 @@ language: php
 matrix:
     include:
         - php: 5.5
-          env: dependencies=highest
         - php: 5.6
-          env: dependencies=highest
         - php: 7.0
-          env: dependencies=highest
         - php: hhvm
-          env: dependencies=highest
         - php: 5.5
           env: dependencies=lowest
         - php: 5.6
@@ -37,9 +33,9 @@ before_install:
     - composer self-update -q
 
 install:
-    - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --no-interaction; fi;
-    - if [ "$dependencies" = "highest" ]; then composer update --no-interaction; fi;
-    - composer show -i
+    - if [ -z "$dependencies" ]; then composer install; fi;
+    - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest -n; fi;
+    - if [ "$dependencies" = "highest" ]; then composer update -n; fi;
 
 script:
     - vendor/phpunit/phpunit/phpunit
