@@ -38,3 +38,4 @@ install:
 
 script:
     - vendor/phpunit/phpunit/phpunit
+
