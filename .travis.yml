@@ -3,30 +3,30 @@ language: php
 matrix:
     include:
         - php: 5.5
-          env: dependencies=highest
+          env: deps=high
         - php: 5.6
-          env: dependencies=highest
+          env: deps=high
         - php: 7.0
-          env: dependencies=highest
+          env: deps=high
         - php: hhvm
-          env: dependencies=highest
+          env: deps=high
         - php: 5.5
-          env: dependencies=lowest
+          env: deps=low
         - php: 5.6
-          env: dependencies=lowest
+          env: deps=low
         - php: 7.0
-          env: dependencies=lowest
+          env: deps=low
         - php: hhvm
-          env: dependencies=lowest
+          env: deps=low
     allow_failures:
         - php: 5.5
-          env: dependencies=lowest
+          env: deps=low
         - php: 5.6
-          env: dependencies=lowest
+          env: deps=low
         - php: 7.0
-          env: dependencies=lowest
+          env: deps=low
         - php: hhvm
-          env: dependencies=lowest
+          env: deps=low
 
 cache:
     directories:
@@ -37,9 +37,9 @@ before_install:
     - composer self-update -q
 
 install:
-    - if [ -z "$dependencies" ]; then composer install; fi;
-    - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest -n; fi;
-    - if [ "$dependencies" = "highest" ]; then composer update -n; fi;
+    - if [ -z "$deps" ]; then composer install; fi;
+    - if [ "$deps" = "lowest" ]; then composer update --prefer-lowest --no-interaction; fi;
+    - if [ "$deps" = "highest" ]; then composer update --no-interaction; fi;
 
 script:
     - vendor/phpunit/phpunit/phpunit
