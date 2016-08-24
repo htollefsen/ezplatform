@@ -38,8 +38,8 @@ before_install:
 
 install:
     - if [ -z "$deps" ]; then composer install; fi;
-    - if [ "$deps" = "lowest" ]; then composer update --prefer-lowest --no-interaction; fi;
-    - if [ "$deps" = "highest" ]; then composer update --no-interaction; fi;
+    - if [ "$deps" = "low" ]; then composer update --prefer-lowest --no-interaction; fi;
+    - if [ "$deps" = "high" ]; then composer update --no-interaction; fi;
 
 script:
     - vendor/phpunit/phpunit/phpunit
