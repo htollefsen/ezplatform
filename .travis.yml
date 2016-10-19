@@ -3,22 +3,26 @@ language: php
 matrix:
     include:
         - php: 5.6
-          env: deps=high
-        - php: 7.0
-          env: deps=high
-        - php: hhvm
-          env: deps=high
+          env: deps=low
         - php: 5.6
-          env: deps=low
+          env: deps=high
         - php: 7.0
           env: deps=low
+        - php: 7.0
+          env: deps=high
         - php: hhvm
           env: deps=low
+        - php: hhvm
+          env: deps=high
     allow_failures:
         - php: 5.6
           env: deps=low
+        - php: 7.0
+          env: deps=low
         - php: hhvm
           env: deps=low
+        - php: hhvm
+          env: deps=high
 
 cache:
     directories:
@@ -27,6 +31,7 @@ cache:
 
 before_install:
     - composer self-update -q
+    - which composer
 
 install:
     - if [ -z "$deps" ]; then composer install; fi;
