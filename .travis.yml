@@ -31,12 +31,11 @@ cache:
 
 before_install:
     - composer self-update -q
-    - which composer
 
 install:
     - if [ -z "$deps" ]; then composer install; fi;
-    - if [ "$deps" = "low" ]; then php -d memory_limit=-1 $(which composer) update --no-interaction --prefer-lowest; fi;
-    - if [ "$deps" = "high" ]; then php -d memory_limit=-1 $(which composer) update --no-interaction; fi;
+    - if [ "$deps" = "low" ]; then php -d memory_limit=-1 composer update --no-interaction --prefer-lowest; fi;
+    - if [ "$deps" = "high" ]; then php -d memory_limit=-1 composer update --no-interaction; fi;
 
 script:
     - phpunit
