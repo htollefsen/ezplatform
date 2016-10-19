@@ -32,6 +32,7 @@ cache:
 before_install:
     - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
     - php composer-setup.php --quiet
+    - php composer.phar --version
 
 install:
     - if [ -z "$deps" ]; then composer install; fi;
